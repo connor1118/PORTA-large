@@ -11,6 +11,8 @@ void towers(int power)
 
 void expansionOP()
 {
+  int error = rightTower.get_position()-leftTower.get_position();
+    printf("%d\n", error);
   if(controller.get_digital(DIGITAL_L1))
   {
     towers(200);
@@ -23,4 +25,38 @@ void expansionOP()
   {
     towers(0);
   }
+}
+void expansionPID(int distance){
+int prevError = 0;
+int sp = distance;
+
+double kp = .31;
+double kd = 0.5;
+
+do
+{
+  int ls = leftTower.get_position();
+  int rs = rightTower.get_position();
+
+  int error = rs-ls;
+  int derivative = error - prevError;
+  prevError = error;
+  int speed = error*kp + derivative*kd;
+
+  if(speed > 100)
+  {
+    speed = 100;
+  }
+  if(speed < -100)
+  {
+    speed = -100;
+  }
+
+  rightTower.move_velocity(speed);
+  leftTower.move_velocity(speed);
+//___int64_t_defined  straight(speed);
+  printf("%d\n", error);
+  delay(20);
+}
+while(isDriving());
 }
