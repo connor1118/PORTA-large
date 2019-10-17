@@ -27,36 +27,50 @@ void expansionOP()
   }
 }
 void expansionPID(int distance){
-int prevError = 0;
-int sp = distance;
+  float Kp = 1.5;
+  float Ki = .25;
+  float Kd = .5;
 
-double kp = .31;
-double kd = 0.5;
+  int error = 0;
+  int lastError = 0;
+  float integral = 0;
+  float derivative = 0;
 
-do
-{
+  int rightPower = 0;
+  int leftPower = 0;
+
+  if(controller.get_digital(DIGITAL_L1))
+  {
+    distance++;
+  }
+  else if(controller.get_digital(DIGITAL_L2))
+  {
+    distance--;
+  }
+  else
+  {
+    towers(0);
+  }
+
   int ls = leftTower.get_position();
   int rs = rightTower.get_position();
 
-  int error = rs-ls;
-  int derivative = error - prevError;
-  prevError = error;
-  int speed = error*kp + derivative*kd;
-
-  if(speed > 100)
+  do
   {
-    speed = 100;
-  }
-  if(speed < -100)
-  {
-    speed = -100;
-  }
+   error = ls-rs;
+    integral = integral + error;
+    if(ls == distance)
+      integral = 0;
+    derivative = error - lastError;
 
-  rightTower.move_velocity(speed);
-  leftTower.move_velocity(speed);
-//___int64_t_defined  straight(speed);
-  printf("%d\n", error);
-  delay(20);
-}
-while(isDriving());
+    rightPower = leftPower + (error * Kp) + (integral * Ki) + (derivative * Kd);
+
+    rightTower.move_velocity(rightPower);
+    leftTower.move_velocity(leftPower);
+  //___int64_t_defined  straight(speed);
+    lastError = error;
+    printf("%d\n", error);
+    delay(20);
+  }
+  while(ls < distance);
 }
