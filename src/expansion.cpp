@@ -90,7 +90,7 @@ void expansionOP(){
     leftTower.move_velocity(leftPower);
   //___int64_t_defined  straight(speed);
     lastError = error;
-    printf("%d\n", error);
+  //  printf("%d\n", error);
     delay(20);
 
 }

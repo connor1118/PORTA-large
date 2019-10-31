@@ -40,6 +40,7 @@
 #include "base.hpp"
 #include "claw.hpp"
 #include "expansion.hpp"
+#include "funnel.hpp"
 
 
 /**
