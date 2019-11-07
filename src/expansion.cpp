@@ -1,6 +1,6 @@
 #include "main.h"
 
-Motor rightTower(20, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
+Motor rightTower(19, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
 Motor leftTower(11, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 
 void towers(int power)
