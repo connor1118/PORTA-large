@@ -1,12 +1,16 @@
 #include "main.h"
 
 Motor rightTower(19, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
+Motor rightTower1(19, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
 Motor leftTower(11, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
+Motor leftTower1(11, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 
 void towers(int power)
 {
   rightTower.move_velocity(power);
   leftTower.move_velocity(power);
+  rightTower1.move_velocity(power);
+  leftTower1.move_velocity(power);
 }
 void towersSet(int pos)
 {
@@ -88,6 +92,8 @@ void expansionOP(){
 
     rightTower.move_velocity(rightPower);
     leftTower.move_velocity(leftPower);
+    rightTower1.move_velocity(rightPower);
+    leftTower1.move_velocity(leftPower);
   //___int64_t_defined  straight(speed);
     lastError = error;
   //  printf("%d\n", error);
