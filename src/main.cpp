@@ -27,12 +27,13 @@ void on_center_button() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "lol");
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
-}
+	pathsInit();
 
+}
 /**
  * Runs while the robot is in the disabled state of Field Management System or
  * the VEX Competition Switch, following either autonomous or opcontrol. When
@@ -67,7 +68,12 @@ void competition_initialize() {
 
 ADIDigitalIn auton1('A');
 ADIDigitalIn auton2('B');
-
+ADIDigitalIn auton3('C');
+ADIDigitalIn auton4('D');
+ADIDigitalIn auton5('E');
+ADIDigitalIn auton6('F');
+ADIDigitalIn auton7('G');
+ADIDigitalIn autonTest('H');
 
 
 void oldAuton(){
@@ -83,11 +89,14 @@ void newAuton(){
 }
 
 void autonomous() {
-	if(auton1.get_value()){
+	if(auton1.get_value())
 		oldAuton();
-	}else if(auton2.get_value()){
+
+	else if(auton2.get_value())
 		newAuton();
-	}
+
+	else if(autonTest.get_value())
+		test();
 }
 
 

@@ -196,12 +196,3 @@ void turn(int degrees)
   }
   while(driving());
 }
-
-auto baseController = okapi::ChassisControllerFactory::create(
-  {1, 2}, {-9, -10},
-  okapi::IterativePosPIDController::Gains{0.001, 0, 0.0001},
-  okapi::IterativePosPIDController::Gains{0.000, 0, 0.0000},
-  okapi::IterativePosPIDController::Gains{0.001, 0, 0.0001},
-  okapi::AbstractMotor::gearset::green,
-  {4.25_in, 15.5_in}
-);

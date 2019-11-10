@@ -41,6 +41,7 @@
 #include "claw.hpp"
 #include "expansion.hpp"
 #include "funnel.hpp"
+#include "autons.hpp"
 
 
 /**
