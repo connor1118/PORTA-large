@@ -19,6 +19,6 @@ void clawOP()
     if(hold == 0)
       claw.move_velocity(0);
     else
-      claw.move_velocity(0);
+      claw.move_velocity(10);
   }
 }

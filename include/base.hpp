@@ -3,4 +3,6 @@
 
 void driveOP();
 
+void drive(int speed);
+
 #endif

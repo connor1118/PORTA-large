@@ -6,6 +6,17 @@ Motor leftDrive1(2, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES);
 Motor rightDrive(9, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 Motor rightDrive1(10, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 
+void left(int speed)
+{
+  leftDrive.move_velocity(speed);
+  leftDrive1.move_velocity(speed);
+}
+
+void right(int speed)
+{
+  rightDrive.move_velocity(speed);
+  rightDrive1.move_velocity(speed);
+}
 
 void driveOP()
 {
@@ -26,4 +37,9 @@ void driveOP()
       rightDrive.move(R);
       rightDrive1.move(R);
   //}
+}
+void drive(int speed)
+{
+  left(speed);
+  right(speed);
 }

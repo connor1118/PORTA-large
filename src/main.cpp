@@ -64,9 +64,40 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
 
+ADIDigitalIn auton1('A');
+ADIDigitalIn auton2('B');
+
+auto baseController = okapi::ChassisControllerFactory::create(
+  {1, 2}, {-9, -10},
+  okapi::IterativePosPIDController::Gains{0.001, 0, 0.0001},
+  okapi::IterativePosPIDController::Gains{0.000, 0, 0.0000},
+  okapi::IterativePosPIDController::Gains{0.001, 0, 0.0001},
+  okapi::AbstractMotor::gearset::green,
+  {4.25_in, 15.5_in}
+);
+
+void oldAuton(){
+	drive(200);
+	delay(1000);
+	drive(-200);
+	delay(500);
+	drive(0);
 }
+
+void newAuton(){
+	//baseController.moveDistance
+}
+
+void autonomous() {
+	if(auton1.get_value()){
+		oldAuton();
+	}else if(auton2.get_value()){
+		newAuton();
+	}
+}
+
+
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -87,7 +118,7 @@ void opcontrol() {
 		driveOP();
 		expansionOP();
 		clawOP();
-	//	funnelOP(); 
+	//	funnelOP();
 
 
 		if(controller.get_digital(DIGITAL_LEFT) && !competition::is_connected())
