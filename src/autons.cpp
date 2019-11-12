@@ -51,6 +51,6 @@ void pathsInit(){
 }
  void test()
  {
-   profileController.setTarget("A");
+   profileController.setTarget("B");
    profileController.waitUntilSettled();
  }
