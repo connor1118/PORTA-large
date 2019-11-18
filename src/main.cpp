@@ -119,8 +119,8 @@ void opcontrol() {
 	{
 		driveOP();
 		expansionOP();
-		clawOP();
-	//	funnelOP();
+		pusherOP();
+		intakeOP();
 
 
 		if(controller.get_digital(DIGITAL_LEFT) && !competition::is_connected())

@@ -38,9 +38,9 @@
 #include "pros/apix.h"
 
 #include "base.hpp"
-#include "claw.hpp"
+#include "pusher.hpp"
 #include "expansion.hpp"
-#include "funnel.hpp"
+#include "intake.hpp"
 #include "autons.hpp"
 
 
