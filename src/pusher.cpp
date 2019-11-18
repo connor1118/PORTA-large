@@ -1,8 +1,8 @@
 #include "main.h"
 
-Motor pusher(3, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES);
+Motor pusher(4, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 static bool hold;
-void clawOP()
+void pusherOP()
 {
   if(controller.get_digital(DIGITAL_UP))
   {
