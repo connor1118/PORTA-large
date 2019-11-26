@@ -51,6 +51,8 @@ void pathsInit(){
 }
  void test()
  {
-   profileController.setTarget("B");
-   profileController.waitUntilSettled();
+   drive(25);
+   //turn(90);
+  // profileController.setTarget("B");
+   //profileController.waitUntilSettled();
  }

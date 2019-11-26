@@ -113,23 +113,29 @@ void slew(int speed)
 
 bool driving()
 {
-  int leftValue = leftDrive.get_position();
-  int rightValue = rightDrive.get_position();
-  int current = (abs(leftValue) + abs(rightValue))/2;
+  static int count = 0;
   static int last = 0;
   static int lastTarget = 0;
-  int difference = abs(current) - abs(last);
-  static int count = 0;
+
+  int leftPos = leftDrive.get_position();
+  int rightPos = rightDrive.get_position();
+
+  int curr = (abs(leftPos) + abs(rightPos))/2;
   int thresh = 2;
-  if(difference < thresh)
+  int target1 = target;
+
+  if(abs(last-curr) < thresh)
     count++;
   else
     count = 0;
-  if(target != lastTarget)
-    count = 0;
-  last = current;
-  lastTarget = target;
 
+  if(target1 != lastTarget)
+    count = 0;
+
+  lastTarget = target1;
+  last = curr;
+
+  //not driving if we haven't moved
   if(count > 6)
     return false;
   else
@@ -141,20 +147,23 @@ void drive(int distance)
   resetDrive();
   target  = distance*(360/14.125);
   int lastError = 0;
+  int sp = target;
 
-  double kP = .3;
+  double kP = .5;
   double kD = .4;
 
   do {
       int leftValue = leftDrive.get_position();
       int rightValue = rightDrive.get_position();
-      int avg = (leftValue = rightValue)/2;
-      int error = target = avg;
+      int curr = leftValue;
+
+      int error = sp - curr;
       int derivative = error-lastError;
       lastError = error;
 
       int power = error*kP + derivative*kD;
-      if(power < 200)
+
+      if(power > 200)
         power = 200;
       if(power < -200)
         power = -200;
@@ -178,12 +187,13 @@ void turn(int degrees)
   do {
       int leftValue = leftDrive.get_position();
       int rightValue = rightDrive.get_position();
-      int avg = (leftValue = rightValue)/2;
-      int error = target = avg;
+      int avg = (leftValue + rightValue)/2;
+      int error = target - avg;
       int derivative = error-lastError;
       lastError = error;
 
       int power = error*kP + derivative*kD;
+
       if(power < 150)
         power = 150;
       if(power < -150)
@@ -195,4 +205,5 @@ void turn(int degrees)
       delay(20);
   }
   while(driving());
+  resetDrive();
 }

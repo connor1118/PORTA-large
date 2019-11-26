@@ -3,6 +3,7 @@
 
 void driveOP();
 
-void drive(int speed);
+void drive(int distance);
+void turn(int degrees);
 
 #endif
