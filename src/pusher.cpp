@@ -17,3 +17,20 @@ void pusherOP()
       pusher.move_velocity(0);
   }
 }
+
+void push(bool in)
+{
+  if(in)
+  {
+    pusher.move_absolute(0, 100);
+    while(!(pusher.get_position()>-5 && pusher.get_position()<5))
+      delay(20);
+  }
+  else
+  {
+    pusher.move_absolute(1500, 100);
+    while(!(pusher.get_position()>1495 && pusher.get_position()<1505))
+      delay(20);
+  }
+
+}

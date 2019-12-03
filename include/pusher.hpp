@@ -3,4 +3,6 @@
 
 void pusherOP();
 
+void push(bool in);
+
 #endif

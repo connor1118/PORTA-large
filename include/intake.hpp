@@ -3,4 +3,6 @@
 
 void intakeOP();
 
+void intake(int speed);
+
 #endif

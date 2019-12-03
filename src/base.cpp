@@ -57,7 +57,7 @@ void leftSlew(int speed)
   if(abs(speed) > abs(current))
   {
     if(speed > 0)
-      output += 5;
+      output += 3;
     else
       output -=5;
   }
@@ -85,7 +85,7 @@ void rightSlew(int speed)
   if(abs(speed) > abs(current))
   {
     if(speed > 0)
-      output += 5;
+      output += 3;
     else
       output -=5;
   }
@@ -121,7 +121,7 @@ bool driving()
   int rightPos = rightDrive.get_position();
 
   int curr = (abs(leftPos) + abs(rightPos))/2;
-  int thresh = 2;
+  int thresh = 3;
   int target1 = target;
 
   if(abs(last-curr) < thresh)
@@ -149,8 +149,8 @@ void drive(int distance)
   int lastError = 0;
   int sp = target;
 
-  double kP = .5;
-  double kD = .4;
+  double kP = .4;
+  double kD = .3;
 
   do {
       int leftValue = leftDrive.get_position();
@@ -173,34 +173,37 @@ void drive(int distance)
       delay(20);
   }
   while(driving());
+  resetDrive();
 }
 
 void turn(int degrees)
 {
   resetDrive();
-  target  = degrees*3.325;
+  target  = degrees*3.85;
   int lastError = 0;
+  int goal = target;
 
-  double kP = .75;
-  double kD = 1.5;
+  double kP = .9;
+  double kD = 2.9;
 
   do {
       int leftValue = leftDrive.get_position();
-      int rightValue = rightDrive.get_position();
-      int avg = (leftValue + rightValue)/2;
-      int error = target - avg;
+      int rightValue = rightDrive1.get_position();
+      int avg = (rightValue - leftValue)/2;
+
+      int error = goal - avg;
       int derivative = error-lastError;
       lastError = error;
 
       int power = error*kP + derivative*kD;
 
-      if(power < 150)
-        power = 150;
-      if(power < -150)
-        power = -150;
+      if(power > 100)
+        power = 100;
+      if(power < -100)
+        power = -100;
 
-      leftSlew(power);
-      rightSlew(-power);
+      leftSlew(-power);
+      rightSlew(power);
       printf("%d\n", error);
       delay(20);
   }
