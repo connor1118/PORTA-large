@@ -5,6 +5,8 @@ Motor rightTower1(17, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
 Motor leftTower(11, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 Motor leftTower1(13, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 
+static int target = 0;
+
 void towers(int power)
 {
   rightTower.move_velocity(power);
@@ -17,21 +19,42 @@ void towersSet(int pos)
   rightTower.move_relative(pos, 100);
   leftTower.move_relative(pos, 100);
 }
-
-void expansionOP1()
+void resetTowers()
 {
-  static int set;
-  if(controller.get_digital(DIGITAL_L1))
-  {
-    set++;
-  }
-  else if(controller.get_digital(DIGITAL_L2))
-  {
-    set--;
-  }
-  printf("%d\n", set);
-  towersSet(set);
+  rightTower.tare_position();
+  leftTower.tare_position();
+  rightTower1.tare_position();
+  leftTower1.tare_position();
 }
+
+bool lifting()
+{
+  static int count = 0;
+  static int last = 0;
+  static int lastTarget = 0;
+
+  int curr = abs(rightTower.get_position());
+  int thresh = 5;
+  int target1 = target;
+
+  if(abs(last-curr) < thresh)
+    count++;
+  else
+    count = 0;
+
+  if(target1 != lastTarget)
+    count = 0;
+
+  lastTarget = target1;
+  last = curr;
+
+  //not driving if we haven't moved
+  if(count > 6)
+    return false;
+  else
+    return true;
+}
+
 
 void expansionOP2()
 {
@@ -99,4 +122,53 @@ void expansionOP(){
   //  printf("%d\n", error);
     delay(20);
 
+}
+
+void expand(int height)
+{
+  resetTowers();
+
+  int left  = leftTower.get_position();
+  int right = rightTower.get_position();
+  int pos = (abs(left)+abs(right))/2;
+
+  int dir;
+  if(height > 0)
+  dir = 1;
+  if(height < 0)
+  dir = -1;
+  
+  int power = 50*dir;
+
+  rightTower.move_velocity(power);
+  leftTower.move_velocity(power);
+  rightTower1.move_velocity(power);
+  leftTower1.move_velocity(power);
+
+  while(pos < abs(height))
+    delay(20);
+
+/*
+  float Kp = 0.8;
+  target = height;
+  int error = 0;
+  do
+  {
+    int pos = rightTower.get_position();
+    int error = target-pos;
+
+    int power = (Kp*error);
+
+    if(power > 50)
+      power = 50;
+    if(power < -50)
+      power = -50;
+
+    rightTower.move_velocity(power);
+    leftTower.move_velocity(power);
+    rightTower1.move_velocity(power);
+    leftTower1.move_velocity(power);
+  }
+  while(lifting());
+  resetTowers();*/
 }

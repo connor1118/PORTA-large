@@ -3,4 +3,6 @@
 
 void expansionOP();
 
+void expand(int height);
+
 #endif
