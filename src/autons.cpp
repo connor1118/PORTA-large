@@ -52,8 +52,31 @@ void pathsInit(){
  void test()
  {
    //drive(48);
-   turn(90);
+   //turn(90);
+   expand(50);
    //push(0);
   // profileController.setTarget("B");
    //profileController.waitUntilSettled();
+ }
+
+void skills()
+{
+
+}
+
+ void red()
+ {
+   intake(200);
+   drive(24);
+   expand(75);
+   drive(4);
+   expand(0);
+   delay(4500);
+   intake(0);
+   drive(-6);
+   turn(118);
+   drive(32);
+   push(0);
+   expand(5);
+   drive(-24);
  }

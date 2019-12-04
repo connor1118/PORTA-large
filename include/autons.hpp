@@ -4,5 +4,7 @@
 void pathsInit();
 
 void test();
+void red();
+void skills();
 
   #endif

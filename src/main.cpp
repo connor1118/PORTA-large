@@ -90,10 +90,10 @@ void newAuton(){
 
 void autonomous() {
 	if(auton1.get_value())
-		oldAuton();
+		skills();
 
 	else if(auton2.get_value())
-		newAuton();
+		red();
 
 	else if(autonTest.get_value())
 		test();

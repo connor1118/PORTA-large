@@ -57,7 +57,7 @@ void leftSlew(int speed)
   if(abs(speed) > abs(current))
   {
     if(speed > 0)
-      output += 3;
+      output += 5;
     else
       output -=5;
   }
@@ -85,7 +85,7 @@ void rightSlew(int speed)
   if(abs(speed) > abs(current))
   {
     if(speed > 0)
-      output += 3;
+      output += 5;
     else
       output -=5;
   }
@@ -121,7 +121,7 @@ bool driving()
   int rightPos = rightDrive.get_position();
 
   int curr = (abs(leftPos) + abs(rightPos))/2;
-  int thresh = 3;
+  int thresh = 2;
   int target1 = target;
 
   if(abs(last-curr) < thresh)
@@ -136,7 +136,7 @@ bool driving()
   last = curr;
 
   //not driving if we haven't moved
-  if(count > 6)
+  if(count > 10)
     return false;
   else
     return true;
