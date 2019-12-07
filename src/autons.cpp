@@ -69,14 +69,39 @@ void skills()
    intake(200);
    drive(24);
    expand(75);
+   drive(6);
+   expand(10);
+   delay(5500);
    drive(4);
    expand(0);
-   delay(4500);
+   delay(3000);
    intake(0);
-   drive(-6);
+   drive(-9);
    turn(118);
-   drive(32);
+   drive(36);
    push(0);
    expand(5);
    drive(-24);
+   push(1);
+ }
+
+ void blue()
+ {
+   intake(200);
+   drive(24);
+   expand(75);
+   drive(6);
+   expand(10);
+   delay(5500);
+   drive(4);
+   expand(0);
+   delay(3000);
+   intake(0);
+   drive(-9);
+   turn(-118);
+   drive(36);
+   push(0);
+   expand(5);
+   drive(-24);
+   push(1);
  }

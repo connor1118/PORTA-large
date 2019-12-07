@@ -95,6 +95,9 @@ void autonomous() {
 	else if(auton2.get_value())
 		red();
 
+	else if(auton3.get_value())
+		blue();
+
 	else if(autonTest.get_value())
 		test();
 }

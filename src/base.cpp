@@ -174,6 +174,8 @@ void drive(int distance)
   }
   while(driving());
   resetDrive();
+  left(0);
+  right(0);
 }
 
 void turn(int degrees)

@@ -1,6 +1,6 @@
 #include "main.h"
 
-Motor pusher(4, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
+Motor pusher(16, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 static bool hold;
 void pusherOP()
 {
