@@ -67,9 +67,12 @@ void skills()
  void red()
  {
    intake(200);
-   drive(24);
+   drive(12);
+   intake(0);
+   drive(12);
    expand(75);
    drive(6);
+   intake(200);
    expand(10);
    delay(5500);
    drive(4);
@@ -88,9 +91,12 @@ void skills()
  void blue()
  {
    intake(200);
-   drive(24);
+   drive(12);
+   intake(0);
+   drive(12);
    expand(75);
    drive(6);
+   intake(200);
    expand(10);
    delay(5500);
    drive(4);

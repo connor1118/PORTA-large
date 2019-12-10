@@ -6,7 +6,16 @@ void pusherOP()
 {
   if(controller.get_digital(DIGITAL_UP))
   {
-    pusher.move_velocity(100);
+    int pos = pusher.get_position();
+    if(pos < 1500)
+    {
+      if(pos < 800)
+        pusher.move_velocity(100);
+      else
+        pusher.move_velocity(50);
+    }
+    else
+      pusher.move_velocity(0);
   }
   else if(controller.get_digital(DIGITAL_DOWN))
   {
