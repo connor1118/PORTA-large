@@ -49,61 +49,62 @@ void driveOP()
   //}
 }
 
-void leftSlew(int speed)
+void leftSlew(int slewSpeed)
 {
-  static int current = 0;
-  static int output = 0;
-
-  if(abs(speed) > abs(current))
+  int step;
+  static int speed = 0;
+  if(abs(speed) < abs(slewSpeed))
   {
-    if(speed > 0)
-      output += 5;
-    else
-      output -=5;
+    step = 5;
   }
   else
   {
-    output = speed;
+    step = 256;
   }
-
-  if(output > 200)
-    output = 200;
-
-  if(output < -200)
-    output = -200;
-
-  current = output;
-
-  left(output);
-}
-
-void rightSlew(int speed)
-{
-  static int current = 0;
-  static int output = 0;
-
-  if(abs(speed) > abs(current))
+  if(speed < slewSpeed - step)
   {
-    if(speed > 0)
-      output += 5;
-    else
-      output -=5;
+    speed += step;
+  }
+  else if(speed > slewSpeed + step)
+  {
+    speed -= step;
   }
   else
   {
-    output = speed;
+    speed = slewSpeed;
   }
 
-  if(output > 200)
-    output = 200;
-
-  if(output < -200)
-    output = -200;
-
-  current = output;
-
-  right(output);
+   left(speed);
 }
+
+void rightSlew(int slewSpeed)
+{
+  int step;
+  static int speed = 0;
+  if(abs(speed) < abs(slewSpeed))
+  {
+    step = 5;
+  }
+  else
+  {
+    step = 256;
+  }
+  if(speed < slewSpeed - step)
+  {
+    speed += step;
+  }
+  else if(speed > slewSpeed + step)
+  {
+    speed -= step;
+  }
+  else
+  {
+    speed = slewSpeed;
+  }
+
+   right(speed);
+}
+
 
 void slew(int speed)
 {
