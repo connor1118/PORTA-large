@@ -143,7 +143,7 @@ void expansionOP(){
 
 }
 
-void expand(int height)
+void expand(int height, bool slow)
 {
   int left  = leftTower.get_position();
   int right = rightTower.get_position();
@@ -155,7 +155,10 @@ void expand(int height)
   if(pos<height)
     speed = 50;
   if(pos>height)
-    speed = 15;
+    if(slow)
+      speed = 15;
+    if(!slow)
+      speed = 50;
 
   rightTower.move_absolute(height, speed);
   leftTower.move_absolute(height, speed);

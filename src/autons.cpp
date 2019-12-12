@@ -70,7 +70,66 @@ void pathsInit(){
 
 void skills()
 {
-
+  intake(200);
+  drive(12);
+  intake(0);
+  drive(12);
+  expand(75, 0);
+  drive(6);
+  intake(200);
+  expand(10, 1);
+  delay(5500);
+  drive(4);
+  expand(0, 1);
+  delay(1000);
+  intake(0);
+  drive(-12);
+  turn(90);
+  intake(200);
+  drive(24);
+  delay(500);
+  intake(0);
+  drive(-6);
+  turn(30);
+  drive(16);
+  push(0);
+  expand(5, 0);
+  delay(500);
+  drive(-24);
+  push(1);
+  turn(-122);
+  expand(0, 0);
+  intake(200);
+  drive(23);
+  delay(500);
+  intake(0);
+  drive(-4);
+  expand(65, 0);
+  drive(8);
+  intake(-200);
+  delay(1000);
+  intake(0);
+  drive(-6);
+  expand(0, 0);
+  delay(2000);
+  drive(-42);
+  drive(-5);
+  delay(500);
+  drive(18);
+  turn(-90);
+  intake(200);
+  drive(20);
+  delay(500);
+  intake(0);
+  drive(-4);
+  expand(85, 0);
+  drive(5);
+  intake(-200);
+  delay(1000);
+  intake(0);
+  drive(-6);
+  expand(0, 0);
+  delay(2000);
 }
 
  void red()
@@ -79,29 +138,30 @@ void skills()
    drive(12);
    intake(0);
    drive(12);
-   expand(75);
+   expand(75, 0);
    drive(6);
    intake(200);
-   expand(10);
+   expand(10, 1);
    delay(5500);
    drive(4);
-   expand(0);
+   expand(0, 1);
    delay(1000);
    intake(0);
    drive(-12);
    turn(90);
    intake(200);
-   drive(28);
+   drive(24);
+   delay(500);
    intake(0);
-   drive(-8);
-   turn(25);
-   drive(14);
+   drive(-6);
+   turn(30);
+   drive(16);
    push(0);
-   expand(5);
+   expand(5, 0);
    delay(500);
    drive(-24);
    push(1);
-   expand(0);
+   expand(0, 0);
  }
 
  void blue()
@@ -110,20 +170,20 @@ void skills()
    drive(12);
    intake(0);
    drive(12);
-   expand(75);
+   expand(75, 0);
    drive(6);
    intake(200);
-   expand(10);
+   expand(10, 1);
    delay(5500);
    drive(4);
-   expand(0);
+   expand(0, 1);
    delay(3000);
    intake(0);
    drive(-9);
    turn(-118);
    drive(36);
    push(0);
-   expand(5);
+   expand(5, 0);
    drive(-24);
    push(1);
  }

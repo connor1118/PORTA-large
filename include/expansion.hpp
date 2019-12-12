@@ -3,6 +3,6 @@
 
 void expansionOP();
 
-void expand(int height);
+void expand(int height, bool slow);
 
 #endif
