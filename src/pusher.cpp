@@ -4,7 +4,7 @@ Motor pusher(16, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 static bool hold;
 void pusherOP()
 {
-  if(controller.get_digital(DIGITAL_UP))
+  if(controller.get_digital(DIGITAL_B))
   {
     int pos = pusher.get_position();
     if(pos < 1500)
@@ -19,7 +19,15 @@ void pusherOP()
   }
   else if(controller.get_digital(DIGITAL_DOWN))
   {
-    pusher.move_velocity(-100);
+    int pos = pusher.get_position();
+    if(pos > 0)
+    {
+        pusher.move_velocity(-100);
+    }
+    else
+    {
+      pusher.move_velocity(0);
+    }
   }
   else
   {

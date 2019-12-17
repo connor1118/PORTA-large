@@ -177,13 +177,21 @@ void skills()
    delay(5500);
    drive(4);
    expand(0, 1);
-   delay(3000);
+   delay(1000);
    intake(0);
-   drive(-9);
-   turn(-118);
-   drive(36);
+   drive(-12);
+   turn(-90);
+   intake(200);
+   drive(24);
+   delay(500);
+   intake(0);
+   drive(-6);
+   turn(-30);
+   drive(16);
    push(0);
    expand(5, 0);
+   delay(500);
    drive(-24);
    push(1);
+   expand(0, 0);
  }
