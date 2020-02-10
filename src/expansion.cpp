@@ -1,7 +1,7 @@
 #include "main.h"
 
 Motor rightTower(19, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
-Motor rightTower1(17, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
+Motor rightTower1(15, MOTOR_GEARSET_36, 1, MOTOR_ENCODER_DEGREES);
 Motor leftTower(11, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 Motor leftTower1(13, MOTOR_GEARSET_36, 0, MOTOR_ENCODER_DEGREES);
 
@@ -92,15 +92,17 @@ void expansionOP2()
   }
 }
 void expansionOP(){
-  towersCoast();
+  //towersCoast();
   int power;
   if(controller.get_digital(DIGITAL_L1))
   {
     power=50;
+    towersBrake();
   }
   else if(controller.get_digital(DIGITAL_L2))
   {
     power=-50;
+    towersCoast();
   }
   else
   {
