@@ -5,5 +5,6 @@ void driveOP();
 
 void drive(int distance);
 void turn(int degrees);
+void move(int speed);
 
 #endif

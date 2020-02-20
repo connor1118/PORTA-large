@@ -72,6 +72,7 @@ void skills()
 {
   intake(200);
   drive(12);
+  delay(500);
   intake(0);
   drive(12);
   expand(75, 0);
@@ -132,6 +133,38 @@ void skills()
   delay(2000);
 }
 
+ void oldred()
+ {
+   intake(200);
+   drive(12);
+   intake(0);
+   drive(12);
+   expand(75, 0);
+   drive(6);
+   intake(200);
+   expand(10, 1);
+   delay(5500);
+   drive(4);
+   expand(0, 1);
+   delay(1000);
+   intake(0);
+   drive(-12);
+   turn(90);
+   intake(200);
+   drive(24);
+   delay(500);
+   intake(0);
+   drive(-6);
+   turn(30);
+   drive(16);
+   push(0);
+   expand(5, 0);
+   delay(500);
+   drive(-24);
+   push(1);
+   expand(0, 0);
+ }
+
  void red()
  {
    intake(200);
@@ -168,28 +201,52 @@ void skills()
  {
    intake(200);
    drive(12);
+   delay(1000);
    intake(0);
    drive(12);
    expand(75, 0);
-   drive(6);
+   drive(7);
    intake(200);
    expand(10, 1);
-   delay(5500);
-   drive(4);
+   delay(3500);
    expand(0, 1);
+   drive(4);
+  // expand(0, 1);
    delay(1000);
    intake(0);
-   drive(-12);
+   drive(-13);
    turn(-90);
    intake(200);
    drive(24);
    delay(500);
-   intake(0);
+   //intake(0);
    drive(-6);
-   turn(-30);
-   drive(16);
+
+   turn(90);
+   drive(-20);
+   drive(-6);
+   delay(500);
+   drive(34);
+   turn(86);
+   drive(55);
+
+   /*turn(155);
+   drive(32);
+   turn(20);
+   drive(50);*/
+   turn(25);
+
+   drive(56);
+   move(-50);
+   delay(200);
+   move(0);
+  // delay(500);
+   //drive(-2);
+   intake(0);
    push(0);
-   expand(5, 0);
+   intake(-25);
+  // expand(25, 0);
+   drive(1);
    delay(500);
    drive(-24);
    push(1);

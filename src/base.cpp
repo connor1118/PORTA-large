@@ -1,7 +1,7 @@
 #include "main.h"
 
 Motor leftDrive(1, MOTOR_GEARSET_18, 0,  MOTOR_ENCODER_DEGREES);
-Motor leftDrive1(2, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES);
+Motor leftDrive1(3, MOTOR_GEARSET_18, 0, MOTOR_ENCODER_DEGREES);
 
 Motor rightDrive(9, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
 Motor rightDrive1(10, MOTOR_GEARSET_18, 1, MOTOR_ENCODER_DEGREES);
@@ -26,6 +26,12 @@ void right(int speed)
 {
   rightDrive.move_velocity(speed);
   rightDrive1.move_velocity(speed);
+}
+
+void move(int speed)
+{
+  right(speed);
+  left(speed);
 }
 
 void driveOP()
@@ -55,7 +61,7 @@ void leftSlew(int slewSpeed)
   static int speed = 0;
   if(abs(speed) < abs(slewSpeed))
   {
-    step = 5;
+    step = 3;
   }
   else
   {
@@ -83,7 +89,7 @@ void rightSlew(int slewSpeed)
   static int speed = 0;
   if(abs(speed) < abs(slewSpeed))
   {
-    step = 5;
+    step = 3;
   }
   else
   {
@@ -137,7 +143,7 @@ bool driving()
   last = curr;
 
   //not driving if we haven't moved
-  if(count > 10)
+  if(count > 15)
     return false;
   else
     return true;
