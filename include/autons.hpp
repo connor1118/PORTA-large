@@ -7,5 +7,7 @@ void test();
 void red();
 void blue();
 void skills();
+void oldred();
+void oldblue();
 
   #endif

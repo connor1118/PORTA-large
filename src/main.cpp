@@ -98,6 +98,12 @@ void autonomous() {
 	else if(auton3.get_value())
 		blue();
 
+	else if(auton4.get_value())
+		oldred();
+
+	else if(auton5.get_value())
+		oldblue();
+
 	else if(autonTest.get_value())
 		test();
 }
