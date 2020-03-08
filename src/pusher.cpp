@@ -20,7 +20,7 @@ void pusherOP()
   else if(controller.get_digital(DIGITAL_DOWN))
   {
     int pos = pusher.get_position();
-    if(pos > 0)
+    if(pos > -30)
     {
         pusher.move_velocity(-100);
     }
